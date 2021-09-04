@@ -15,6 +15,8 @@ const myProvider = initProvider(
   chainid, 
   privateKey
 );
+// then window.ethereum is available to use
+// myProvider is window.ethereum
 ```
 
 
