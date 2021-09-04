@@ -19,7 +19,9 @@ const myProvider = initProvider(
 
 
 # run example
-
+```
+yarn serve
+```
 
 
 # how to modify/develop this project
