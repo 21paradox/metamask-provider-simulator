@@ -1,5 +1,28 @@
 # metamask-provider-simulator
 
+A custom provider which implements all metamask inpage api.
+
+You can use it for auto testing(puppeter), or develop a custom wallet client.
+
+Usage:
+```
+import {
+  initProvider
+} from 'metamaskSimulateProvider'
+
+const myProvider = initProvider(
+  rpcUrl, 
+  chainid, 
+  privateKey
+);
+```
+
+
+# run example
+
+
+
+# how to modify/develop this project
 ## Project setup
 ```
 yarn install
