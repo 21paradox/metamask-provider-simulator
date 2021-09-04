@@ -21,6 +21,7 @@ const myProvider = initProvider(
 
 
 # run example
+fill .env file with your configs. rpcurl, chainid, privatekey
 ```
 yarn serve
 ```
