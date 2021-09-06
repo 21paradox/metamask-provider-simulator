@@ -8,7 +8,7 @@ Usage:
 ```
 import {
   initProvider
-} from 'metamaskSimulateProvider'
+} from 'metamask-provider-simulator'
 
 const myProvider = initProvider(
   rpcUrl, 
