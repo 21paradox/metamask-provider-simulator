@@ -155,6 +155,7 @@ export const initProvider = (rpcUrl, chainid, privateKey) => {
     let wallet = new ethers.Wallet(privateKey);
     const simProvider = new MetamaskSimulateProvider(rpcUrl, chainid, wallet);
     wallet = wallet.connect(simProvider);
+    simProvider.wallet = wallet;
     Object.assign(window, {
         ethereum: simProvider,
     });
