@@ -10,10 +10,15 @@ import {
   initProvider
 } from 'metamask-provider-simulator'
 
+const myTestEnvFlag = tru
+
 const myProvider = initProvider(
   rpcUrl, 
   chainid, 
-  privateKey
+  privateKey,
+  () => {
+    return myTestEnvFlag
+  }
 );
 // then window.ethereum is available to use
 // myProvider is window.ethereum

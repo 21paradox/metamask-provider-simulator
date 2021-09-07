@@ -134,16 +134,26 @@ import { ethers } from 'ethers';
 // import * as conf from './config'
 import * as sigUtil from 'eth-sig-util'
 import {
-  initProvider
+  initProviderOnly,
 } from './metamaskSimulateProvider'
 
 const chainid = Number(process.env.VUE_APP_chainid)
 
-const myProvider = initProvider(
+const myTestEnvFlag = true
+
+const myProvider = initProviderOnly(
   process.env.VUE_APP_rpcUrl,
   Number(process.env.VUE_APP_chainid), 
-  process.env.VUE_APP_privateKey
+  process.env.VUE_APP_privateKey,
+  () => {
+    if (myTestEnvFlag) {
+      return true
+    }
+    return false
+  }
 );
+
+console.log(myProvider, 'mp')
 
 export default {
   name: 'App',
