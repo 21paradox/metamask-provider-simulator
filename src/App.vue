@@ -27,6 +27,16 @@
       </p>
 
       <p>
+        <button @click="wallet_addEthereumChain()">
+          wallet_addEthereumChain
+        </button>
+        <span> ---- </span>
+        <button @click="wallet_addEthereumChain1()">
+          wallet_addEthereumChain1
+        </button>
+      </p>
+
+      <p>
         <button @click="eth_getEncryptionPublicKey()">
           eth_getEncryptionPublicKey
         </button>
@@ -133,6 +143,7 @@
 import { ethers } from 'ethers';
 // import * as conf from './config'
 import * as sigUtil from 'eth-sig-util'
+import * as ethUtil from 'ethereumjs-util';
 import {
   initProviderOnly,
 } from './metamaskSimulateProvider'
@@ -205,6 +216,39 @@ export default {
         params: [
           {
             eth_accounts: {},
+          },
+        ],
+      });
+      console.log(accounts);
+    },
+
+    async wallet_addEthereumChain() {
+      const accounts = await window.ethereum.request({
+        method: 'wallet_addEthereumChain',
+        params: [
+          {
+            chainId: ethUtil.intToHex(137),
+            chainName: 'Matic(Polygon)',
+            rpcUrls: [
+              "https://rpc-mainnet.matic.network",
+            ],
+            nativeCurrency: {name: "Matic", symbol: "MATIC", decimals: 18}
+          },
+        ],
+      });
+      console.log(accounts);
+    },
+   async wallet_addEthereumChain1() {
+      const accounts = await myProvider.request({
+        method: 'wallet_addEthereumChain',
+        params: [
+          {
+            chainId: ethUtil.intToHex(137),
+            chainName: 'Matic(Polygon)',
+            rpcUrls: [
+              "https://rpc-mainnet.matic.network",
+            ],
+            nativeCurrency: {name: "Matic", symbol: "MATIC", decimals: 18}
           },
         ],
       });

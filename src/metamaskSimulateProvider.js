@@ -15,6 +15,8 @@ const initProviderOnly = (rpcUrl, chainid, privateKey, checker) => {
             super(rpcUrl, chainid);
             this.selectedAddress = wallet.address;
             this.isMetaMask = true;
+            this.chainId = ethUtil.intToHex(chainid);
+            this.networkVersion = String(chainid);
             this.enable = function () {
                 return this.request({ method: 'eth_requestAccounts' });
             };
@@ -54,6 +56,12 @@ const initProviderOnly = (rpcUrl, chainid, privateKey, checker) => {
                 // console.info(args)
                 if (!checker()) {
                     throw new Error('invalid checker, please provide c');
+                }
+                if (method === 'wallet_addEthereumChain') {
+                    return null;
+                }
+                if (method === 'wallet_switchEthereumChain') {
+                    return null;
                 }
                 if (method === 'eth_requestAccounts') {
                     return [this.selectedAddress];

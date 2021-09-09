@@ -19,6 +19,9 @@ export const initProviderOnly = (
       this.selectedAddress = wallet.address;
       this.isMetaMask = true;
 
+      this.chainId = ethUtil.intToHex(chainid);
+      this.networkVersion = String(chainid);
+
       this.enable = function () {
         return this.request({ method: 'eth_requestAccounts' });
       };
@@ -37,6 +40,8 @@ export const initProviderOnly = (
 
     selectedAddress: string;
     isMetaMask: true;
+    chainId: string;
+    networkVersion: string;
 
     enable() {
       return this.request({ method: 'eth_requestAccounts' });
@@ -65,6 +70,13 @@ export const initProviderOnly = (
       // console.info(args)
       if (!checker()) {
         throw new Error('invalid checker, please provide c');
+      }
+
+      if (method === 'wallet_addEthereumChain') {
+        return null
+      }
+      if (method === 'wallet_switchEthereumChain') {
+        return null
       }
 
       if (method === 'eth_requestAccounts') {
