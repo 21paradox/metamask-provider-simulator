@@ -17,6 +17,7 @@ const initProviderOnly = (rpcUrl, chainid, privateKey, checker) => {
             this.isMetaMask = true;
             this.chainId = ethUtil.intToHex(chainid);
             this.networkVersion = String(chainid);
+            this._metamask = {};
             this.enable = function () {
                 return this.request({ method: 'eth_requestAccounts' });
             };

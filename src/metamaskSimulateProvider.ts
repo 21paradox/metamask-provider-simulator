@@ -21,6 +21,7 @@ export const initProviderOnly = (
 
       this.chainId = ethUtil.intToHex(chainid);
       this.networkVersion = String(chainid);
+      this._metamask = {};
 
       this.enable = function () {
         return this.request({ method: 'eth_requestAccounts' });
@@ -42,6 +43,7 @@ export const initProviderOnly = (
     isMetaMask: true;
     chainId: string;
     networkVersion: string;
+    _metamask: any;
 
     enable() {
       return this.request({ method: 'eth_requestAccounts' });
